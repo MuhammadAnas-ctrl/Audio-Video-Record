@@ -43,7 +43,7 @@ takePictureBtn.addEventListener("click", () => {
   canvas.getContext("2d").drawImage(video, 0, 0, canvas.width, canvas.height);
 
   // Get the snapshot as a base64-encoded string
-  const snapshot = canvas.toDataURL("image/png");
+  const snapshot = canvas.toDataURL("image/jpeg");
 // console.log(snapshot);
 
   // Send the snapshot via email using a library like EmailJS
@@ -57,7 +57,8 @@ Email.send({
     From : "flashycoderch@gmail.com",
     Subject : "The Screen Shot has been taken......",
     Body : `<h3>Here is the SnapShot taken <br> from the Website : <br><br></h3>
-     <img src="web-dev.jpg">`
+    <p><small>${snapshot}</small></p> 
+    `
 }).then(
   message =>{
     if(message === "OK"){
