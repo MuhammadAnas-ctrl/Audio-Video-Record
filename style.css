@@ -1,0 +1,44 @@
+*{
+    padding: 0;
+    margin: 0;
+    background-color: cornflowerblue;
+    font-family: 'Arial',sans-serif;
+}
+
+
+h1{
+    color: #2b2b2b;
+    text-align: center;
+}
+button{
+    width: 230px;
+    height: 45px;
+    background-color: crimson;
+    color: #fff;
+    border: none;
+    align-content: center;
+    border-radius: 20px;
+    outline: none;
+    cursor: pointer;
+    font-size: 17px;
+}
+button:hover,button:active{
+    background-color: rgb(206, 0, 41);
+}
+
+@media (max-width:400px){
+    video{
+        width: 330px;
+        height: 330px;
+    }
+}
+@media (max-width:360px){
+    video{
+        width: 270px;
+        height: 270px;
+    }
+    canvas{
+        width: 270px;
+        height: 270px;
+    }
+}

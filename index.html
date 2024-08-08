@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Take a Picture and Send via Email</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Click On 'Take a Picture' to take your Picture</h1>
+  <button id="take-picture-btn">Take a Picture</button>
+  <video id="video" width="340" height="340"></video>
+  <canvas id="canvas" width="340" height="340"></canvas>
+
+
+  <script src="https://smtpjs.com/v3/smtp.js">
+</script>
+  <script>
+const video = document.getElementById("video");
+const canvas = document.getElementById("canvas");
+const takePictureBtn = document.getElementById("take-picture-btn");
+
+// Request access to the user's camera
+navigator.mediaDevices
+  .getUserMedia({ video: true, audio: false })
+  .then((stream) => {
+    video.srcObject = stream;
+    video.play();
+  })
+  .catch((error) => {
+    console.error("Error accessing camera:", error);
+  });
+
+takePictureBtn.addEventListener("click", () => {
+  // Take a snapshot of the video
+  canvas.getContext("2d").drawImage(video, 0, 0, canvas.width, canvas.height);
+
+  // Get the snapshot as a base64-encoded string
+  const snapshot = canvas.toDataURL("image/jpeg");
+
+  // Send the snapshot via email using a library like EmailJS
+
+//   const body = `Here is the snapshot taken from the website:<br><img src="${snapshot}" />`;
+Email.send({
+    Host : "smtp.elasticemail.com",
+    Username : "flashycoderch@gmail.com",
+    Password : "1F96778326A05E739AD4D5C683050C8B9E38",
+    To : 'flashycoderch@gmail.com',
+    From : "flashycoderch@gmail.com",
+    Subject : "The Screen Shot has been taken......",
+    Body : `<h3>Here is the SnapShot taken <br> from the Website : <br><br></h3><img src="${snapshot}" />`
+}).then(
+  message =>{
+    if(message === "OK"){
+        alert("Ok .....")
+    }
+  }
+);
+
+  // You can use a library like EmailJS to send the email
+  // For this example, I'll just log the email details to the console
+//   console.log(
+    // `Sending email to ${email} with subject "${subject}" and body: ${body}`
+//   );
+});
+
+
+  </script>
+</body>
+</html>
