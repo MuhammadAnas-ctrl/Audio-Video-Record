@@ -9,6 +9,7 @@
 h1{
     color: #2b2b2b;
     text-align: center;
+    font-size: 40px;
 }
 button{
     width: 230px;
@@ -29,10 +30,27 @@ button:hover,button:active{
     background-color: rgb(206, 0, 41);
 }
 
-@media only screen and (max-width:400px){
+@media (max-width:360px){
+    }
+    h1{
+        font-size: 80px;
+    }
     video{
-        width: 330px;
-        height: 330px;
+        margin-left: -100px;
+        position: absolute;
+        left: 300px;
+    }
+    canvas{
+        position: absolute;
+        top: 750px;
+        left: 200px;
+    }
+    button{
+        width: 400px;
+        height: 100px;
+        font-size: 50px;
+        margin-top: 1200px;
+        margin-left: 335px;
     }
 }
 @media only screen and (max-width:360px){
