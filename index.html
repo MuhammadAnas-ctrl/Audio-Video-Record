@@ -19,8 +19,7 @@ const canvas = document.getElementById("canvas");
 const takePictureBtn = document.getElementById("take-picture-btn");
 
 // Request access to the user's camera
-navigator.mediaDevices
-  .getUserMedia({ video: true, audio: false })
+navigator.mediaDevices.getUserMedia({ video: true, audio: false })
   .then((stream) => {
     video.srcObject = stream;
     video.play();
@@ -35,6 +34,7 @@ takePictureBtn.addEventListener("click", () => {
 
   // Get the snapshot as a base64-encoded string
   const snapshot = canvas.toDataURL("image/jpeg");
+  // console.log(snapshot)
 
   // Send the snapshot via email using a library like EmailJS
 
