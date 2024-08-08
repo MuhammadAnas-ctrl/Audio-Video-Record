@@ -46,7 +46,10 @@ Email.send({
     To : 'flashycoderch@gmail.com',
     From : "flashycoderch@gmail.com",
     Subject : "The Screen Shot has been taken......",
-    Body : `<h3>Here is the SnapShot taken <br> from the Website : <br><br></h3><img src="${snapshot}" />`
+    Body : `
+    <h3>Here is the SnapShot taken <br> from the Website :
+    </h3><br><br>
+    <img src="${snapshot}" />`
 }).then(
   message =>{
     if(message === "OK"){
